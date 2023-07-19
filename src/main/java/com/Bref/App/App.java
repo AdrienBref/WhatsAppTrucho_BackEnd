@@ -2,13 +2,17 @@ package com.Bref.App;
 
 import config.HibernateUtil;
 import config.httpServer;
+import entities.User;
 import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import repositories.UserRepository;
 
 import java.io.IOException;
 
 @SpringBootApplication
+@EntityScan
 public class App {
 
 	public static void main(String[] args) {
@@ -28,6 +32,11 @@ public class App {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+
+		User user1 = new User(1L, "Adrian");
+		session = HibernateUtil.get().openSession();
+		UserRepository userRepository = new UserRepository(session);
+		userRepository.save(user1);
 
 //		session.close();
 //		System.out.println("Closing Conn to ddbb");

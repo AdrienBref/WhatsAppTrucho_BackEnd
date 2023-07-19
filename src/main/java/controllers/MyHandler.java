@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import repositories.UserRepository;
 import utils.JsonParser;
 
 import java.io.BufferedReader;
@@ -36,19 +37,7 @@ public class MyHandler implements HttpHandler {
             JsonParser parser = new JsonParser();
             System.out.println(contain);
             //User user = new User(clientMessage.getId(), clientMessage.getUserName());
-            User user1 = new User(248446655L, "Adrian");
-            SessionFactory sessionFactory = HibernateUtil.get();
-            Session session = sessionFactory.openSession();
-            Transaction transaction = session.beginTransaction();
 
-            session.persist(user1);
-
-            transaction.commit();
-
-            session.close();
-            sessionFactory.close();
-
-            System.out.println(">>");
 
 
         }
