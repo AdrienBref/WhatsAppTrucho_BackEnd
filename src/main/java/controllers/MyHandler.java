@@ -3,12 +3,12 @@ package controllers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import config.HibernateUtil;
-import entities.User;
+//import entities.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import repositories.UserRepository;
+//import repositories.UserRepository;
 import utils.JsonParser;
 
 import java.io.BufferedReader;

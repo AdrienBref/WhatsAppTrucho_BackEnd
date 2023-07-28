@@ -8,13 +8,14 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3309/WhatsAppTrucho</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3309/WhatsAppTrucho?createDatabaseIfNotExist=true</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">example</property>
         <property name="hibernate.dialect.storage_engine">innodb</property>
         <property name="hibernate.show_sql">true</property>
         <!-- Otras propiedades de configuración -->
         <property name="hibernate.hbm2ddl.auto">create</property>
-        <mapping class="entities.User"/>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <mapping class="entities.Message"/>
     </session-factory>
 </hibernate-configuration>
