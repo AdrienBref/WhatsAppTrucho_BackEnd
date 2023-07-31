@@ -6,11 +6,9 @@ import config.HibernateUtil;
 //import entities.User;
 import entities.Message;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 //import repositories.UserRepository;
 import repositories.MessageRepository;
+import services.MessageServices;
 import utils.JsonParser;
 
 import java.io.BufferedReader;
@@ -37,9 +35,14 @@ public class MyHandler implements HttpHandler {
                 contain = line;
             }
 
+
             Session session = HibernateUtil.get().openSession();
             JsonParser parser = new JsonParser();
             System.out.println(contain);
+
+            MessageServices messageServices = new MessageServices();
+
+            messageServices.addToMessageStack(contain);
 
             Message message1 = parser.parse(contain, Message.class);
 

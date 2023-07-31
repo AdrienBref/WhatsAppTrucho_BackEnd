@@ -14,9 +14,10 @@ public class Message {
     @Column(name="mensaje_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    String userId;
+    private String userId;
     private String date;
     private String textMessage;
+    private boolean readed = false;
 
     public Message (String userId, String date, String textMessage) {
         this.userId = userId;
@@ -54,5 +55,13 @@ public class Message {
 
     public void setTextMessage(String textMessage) {
         this.textMessage = textMessage;
+    }
+
+    public boolean isReaded() {
+        return readed;
+    }
+
+    public void setReaded(boolean readed) {
+        this.readed = readed;
     }
 }
