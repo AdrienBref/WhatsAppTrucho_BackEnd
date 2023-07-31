@@ -4,11 +4,13 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import config.HibernateUtil;
 //import entities.User;
+import entities.Message;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 //import repositories.UserRepository;
+import repositories.MessageRepository;
 import utils.JsonParser;
 
 import java.io.BufferedReader;
@@ -34,9 +36,15 @@ public class MyHandler implements HttpHandler {
                 System.out.println("Client: " + clientAddress);
                 contain = line;
             }
+
+            Session session = HibernateUtil.get().openSession();
             JsonParser parser = new JsonParser();
             System.out.println(contain);
-            //User user = new User(clientMessage.getId(), clientMessage.getUserName());
+
+            Message message1 = parser.parse(contain, Message.class);
+
+            MessageRepository messageRepository = new MessageRepository(session);
+            messageRepository.save(message1);
 
 
 

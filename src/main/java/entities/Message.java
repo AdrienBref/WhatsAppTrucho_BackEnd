@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity(name="messages")
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = "date", name= "dateUniqueConstraint"))
 @Getter
 @Setter
 public class Message {
@@ -15,10 +14,12 @@ public class Message {
     @Column(name="mensaje_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    String userId;
     private String date;
     private String textMessage;
 
-    public Message (String date, String textMessage) {
+    public Message (String userId, String date, String textMessage) {
+        this.userId = userId;
         this.date = date;
         this.textMessage = textMessage;
     }
@@ -29,6 +30,14 @@ public class Message {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getDate() {

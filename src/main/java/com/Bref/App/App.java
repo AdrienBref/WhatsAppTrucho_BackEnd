@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import repositories.MessageRepository;
+import utils.JsonParser;
 //import repositories.UserRepository;
 
 import java.io.IOException;
@@ -29,19 +30,21 @@ public class App {
 		/**
 		 * Starting the server
 		 */
-//		try {
-//			httpServer server = new httpServer(8080, "/");
-//		} catch (IOException e) {
-//			throw new RuntimeException(e);
-//		}
+		try {
+			httpServer server = new httpServer(8080, "/");
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 
 //		User user1 = new User("Adrian");
 //		UserRepository userRepository = new UserRepository(session);
 //		userRepository.save(user1);
 
-		Message message1 = new Message("23-07-2023", "Ola k Ase");
-		MessageRepository messageRepository = new MessageRepository(session);
-		messageRepository.save(message1);
+//		Message message1 = new Message("dsafj9duf03f", "31-07-2023", "Ola ke ase");
+//		MessageRepository messageRepository = new MessageRepository(session);
+//		messageRepository.save(message1);
+
+
 
 //		session.close();
 //		System.out.println("Closing Conn to ddbb");
