@@ -69,6 +69,19 @@
 			<version>6.2.6.Final</version>
 			<type>pom</type>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.java-websocket</groupId>
+			<artifactId>Java-WebSocket</artifactId>
+			<version>1.5.1</version> <!-- Asegúrate de usar la versión más reciente -->
+		</dependency>
+
 
 	</dependencies>
 

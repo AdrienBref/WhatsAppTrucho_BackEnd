@@ -2,33 +2,36 @@ package com.Bref.App;
 
 import config.HibernateUtil;
 import config.httpServer;
-import entities.Message;
+import controllers.WebSocketServerController;
 //import entities.User;
 import org.hibernate.Session;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import repositories.MessageRepository;
-import utils.JsonParser;
 //import repositories.UserRepository;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.util.Scanner;
+
 
 @SpringBootApplication
 @EntityScan
 public class App {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		//SpringApplication.run(App.class, args);
+
+		Scanner scanner = new Scanner(System.in);
 
 		System.out.println( "Connecting to ddbb" );
 		Session session = HibernateUtil.get().openSession();
 		System.out.println( "Connected to ddbb" );
 
 
+
 		/**
-		 * Starting the server
+		 * Starting the Http server
 		 */
 		try {
 			httpServer server = new httpServer(8080, "/");
@@ -36,20 +39,23 @@ public class App {
 			throw new RuntimeException(e);
 		}
 
-//		User user1 = new User("Adrian");
-//		UserRepository userRepository = new UserRepository(session);
-//		userRepository.save(user1);
+		/*
+		* Starting the webSocket server
+		* */
 
-//		Message message1 = new Message("dsafj9duf03f", "31-07-2023", "Ola ke ase");
-//		MessageRepository messageRepository = new MessageRepository(session);
-//		messageRepository.save(message1);
-
+		WebSocketServerController server = new WebSocketServerController(new InetSocketAddress(8081));
+		server.start();
+		System.out.println("Servidor WebSocket escuchando en el puerto " + 8081);
 
 
 //		session.close();
 //		System.out.println("Closing Conn to ddbb");
 
+
+
 	}
+
+
 
 }
 
