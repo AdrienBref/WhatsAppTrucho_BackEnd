@@ -26,18 +26,27 @@ public class MyHandler implements HttpHandler {
 
 
         if ("POST".equals(exchange.getRequestMethod())) {
+            // Lee el cuerpo del mensaje POST
             BufferedReader reader = new BufferedReader(new InputStreamReader(exchange.getRequestBody()));
             StringBuilder requestBody = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
                 requestBody.append(line);
-                System.out.println("Client: " + clientAddress);
-                contain = line;
+                
             }
+            reader.close();
+
+            // Parsea el contenido del JSON
+            String jsonData = requestBody.toString();
 
 
             Session session = HibernateUtil.get().openSession();
+
+
             JsonParser parser = new JsonParser();
+           
+
+
             System.out.println(contain);
 
             MessageServices messageServices = new MessageServices();

@@ -1,5 +1,7 @@
 package config;
 import com.sun.net.httpserver.HttpServer;
+
+import controllers.LoginHandler;
 import controllers.MyHandler;
 
 import java.io.IOException;
@@ -18,6 +20,8 @@ public class httpServer {
 
         // Crear contexto y definir manejador para las solicitudes
         server.createContext("/", new MyHandler());
+        server.createContext("/login", new LoginHandler());
+        server.createContext("/register", new RegisterHandler());
 
         // Iniciar el servidor
         server.start();
